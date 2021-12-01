@@ -1,0 +1,34 @@
+.latest-stories-Container {
+    max-width: 1500px;
+    width: 100%;
+    margin: 2rem auto;
+
+}
+
+
+.home-latest-stories-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.home-latest-stories-flex img {
+    width: 100%;
+}
+
+@media screen and (max-width: 1030px) {
+    .home-latest-stories-flex {
+
+        gap: 2rem;
+    }
+}
+
+.home-latest-post-btm {
+    width: 400px;
+}
+
+.w-90 {
+    width: 90%;
+}

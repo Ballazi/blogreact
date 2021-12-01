@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from './Components/Home Section/Home';
+import SinglePost from './Components/Single Post/SinglePost';
+import GetStarted from './Components/Get-Started/Get-Started';
+import WriterProfile from './Components/Get-Started/Writer';
+import multiUse from './Components/CategoryPage/CategoryPage';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch >
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Home" component={Home} />
+          <Route exact path="/category/:category" component={multiUse} />
+          <Route exact path="/:category/:id" component={SinglePost} />
+          <Route exact path="/:category/:id/:author" component={WriterProfile} />
+          <Route exact path="/GetStarted/" component={GetStarted} />
+        </Switch>
+      </BrowserRouter>
+
     </div>
+
   );
 }
 
