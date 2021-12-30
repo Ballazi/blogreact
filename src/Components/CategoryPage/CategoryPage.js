@@ -3,8 +3,8 @@ import React from "react";
 import NavBar from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import { useParams, Link } from "react-router-dom";
-import ArrayOfBlogs from "../ArrayOfBlogs/ArrayOfBlogs";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 let componentDidMount = () => {
@@ -36,11 +36,14 @@ let MultiUse = () => {
     const [blog, setblog] = useState(null)
 
     useEffect(() => {
-        let blog = ArrayOfBlogs.find(blog => blog.category === category)
-        if (blog) {
-            setblog(blog)
-        }
-    }, [category])
+
+        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/common";
+        axios.get(url,{params:{category:category}}).then((res) => {setblog(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
+        // let blog = ArrayOfBlogs.find(blog => blog.category === category)
+        // if (blog) {
+        //     setblog(blog)
+        // }
+    })
 
     return (
         <>
@@ -51,10 +54,9 @@ let MultiUse = () => {
                     <div className="LatestArticles-Container margtop2rem">
                         <div className="LatestArticles">
                             <div className="articles-left-home">
-                                <div className="heading-home-latest border-btm">{blog.category}</div>
+                                <div className="heading-home-latest border-btm">{category}</div>
 
-                                {ArrayOfBlogs.filter((item) => item.category === blog.category
-                                ).slice(0, postNumber).map(CreateLatestArticles)}
+                                {blog.slice(0, postNumber).map(CreateLatestArticles)}
 
                                 <div onClick={() => setpostNumber(postNumber + 2)} className="load-more"> <i class="fas fa-arrow-down"></i> Load More</div>
 

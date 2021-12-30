@@ -4,17 +4,17 @@ import { Redirect } from 'react-router';
 
 let LogIn = () => {
 
-    const [isValid, setActive] = useState(false)
-    var [emailValue, setEmail] = useState("")
-    var [passValue, setPass] = useState("")
+    const [isValid, setActive] = useState(false);
+    var [emailValue, setEmail] = useState("");
+    var [PassValue, setPass] = useState("");
 
     const checkValid = (e) => {
         e.preventDefault();
-        if (emailValue === "a" && passValue === "a") {
+        if (emailValue === "a" && PassValue === "a") {
             setActive(true);
-            localStorage.setItem("user", "loggged")
+            localStorage.setItem("user", "logedin");
         } else {
-            alert("invalid")
+            alert("Invalid userid or password");
         }
     }
 

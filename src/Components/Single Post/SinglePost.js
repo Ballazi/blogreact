@@ -6,13 +6,13 @@ import "./SinglePost.css"
 import AuthorAvatar from "../../Images/avatar.png"
 import ClapImage from "../../Images/clap.png"
 import { useParams, Link } from "react-router-dom";
-import ArrayOfBlogs from "../ArrayOfBlogs/ArrayOfBlogs";
 import { useEffect, useState } from "react";
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
+import axios from "axios";
 
 let componentDidMount = () => {
     window.scrollTo(0, 0);
@@ -51,8 +51,8 @@ let relatedCards = (data) => {
 
 let SinglePost = () => {
     const { id } = useParams();
-    const [blog, setblog] = useState(null)
-
+    const [blog, setblog] = useState();
+    const [randblog, setrandblog] =useState([]);
     const [clicked, setclicked] = useState(false);
     var [counter, setcounter] = useState(0)
     const [open, setOpen] = useState(false);
@@ -86,15 +86,10 @@ let SinglePost = () => {
 
     useEffect(() => {
 
-
-        let blog = ArrayOfBlogs.find(blog => blog.id === parseInt(id))
-        if (blog) {
-            setblog(blog)
-
-        }
-
-
-    }, [id])
+        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/singlepost";
+        axios.get(url,{params:{id:id}}).then((res) => {setblog(res.data.obj);setrandblog(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
+        
+    })
 
     return (
         <>
@@ -194,7 +189,7 @@ let SinglePost = () => {
                     <hr />
                     <div className="single-post-more-flex">
 
-                        {ArrayOfBlogs.slice(1, 4).map(relatedCards)}
+                        {randblog.map(relatedCards)}
 
                     </div>
 

@@ -1,9 +1,8 @@
 import './Latest.css';
-import React from "react";
+import React, {useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
-
-import ArrayOfBlogs from '../../ArrayOfBlogs/ArrayOfBlogs';
+import axios from 'axios';
 
 let createCards = (card) => {
     return <div key={card.id} className="home-latest-post">
@@ -19,6 +18,12 @@ let createCards = (card) => {
     </div>
 }
 let Latest = () => {
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/home/latest";
+        axios.get(url).then((res) => {setBlogs(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
+    })
 
     return (
         <div className="latest-Container">
@@ -27,7 +32,7 @@ let Latest = () => {
                 <div className="heading-home-latest border-btm">The Latest</div>
 
                 <div className="home-latest-flex">
-                    {ArrayOfBlogs.slice(6, 9).map(createCards)}
+                    {blogs.map(createCards)}
                 </div>
             </div>
         </div >

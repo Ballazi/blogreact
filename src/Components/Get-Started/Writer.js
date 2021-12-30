@@ -6,9 +6,8 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { deepPurple } from '@mui/material/colors';
 import { useParams, Link } from "react-router-dom";
-import ArrayOfBlogs from "../ArrayOfBlogs/ArrayOfBlogs";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 
 let componentDidMount = () => {
     window.scrollTo(0, 0);
@@ -33,15 +32,18 @@ let relatedCards = (data) => {
 
 let WriterProfile = () => {
     const { author } = useParams();
-    const [blog, setblog] = useState(null)
-    const [follow, setfollow] = useState(false)
+    const [blog, setblog] = useState();
+    const [rblog, setrblog] = useState([]);
+    const [follow, setfollow] = useState(false);
 
     useEffect(() => {
-        let blog = ArrayOfBlogs.find(blog => blog.author === author)
-        if (blog) {
-            setblog(blog)
-        }
-    }, [author])
+        // let blog = ArrayOfBlogs.find(blog => blog.author === author)
+        // if (blog) {
+        //     setblog(blog)
+        // }
+        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/writer";
+        axios.get(url,{params:{author:author}}).then((res) => {setblog(res.data.arr);setrblog(res.data.arr1)}).catch((err) => {console.log(JSON.stringify(err))});
+    });
 
     return (
         <>
@@ -74,9 +76,7 @@ let WriterProfile = () => {
                         <div className="flex">
 
 
-                            {ArrayOfBlogs.filter(function (creature) {
-                                return creature.author === blog.author
-                            }).map(relatedCards)}
+                            {rblog.map(relatedCards)}
                         </div>
                     </div>
 

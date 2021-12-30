@@ -1,7 +1,7 @@
 import './Intro.css';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
-import ArrayOfBlogs from '../../ArrayOfBlogs/ArrayOfBlogs';
+import axios from 'axios';
 
 
 
@@ -35,18 +35,24 @@ let createSecondaryHeroCover = (Data) => {
 }
 
 let Intro = () => {
+    const [cover, setCover] = useState([]);
+    const [secondCover, setSecondCover] = useState([]);
+
+    useEffect (() => {
+        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/home/intro";
+        axios.get(url).then((res) => {setCover(res.data.arr1);setSecondCover(res.data.arr2)}).catch((err) => {console.log(JSON.stringify(err))});
+    })
+
     return (
         <div className="Intro-Container">
             <div className="intro">
 
 
-                {ArrayOfBlogs.filter(function (item) {
-                    return item.id === 1
-                }).map(createHeroCover)}
+                {cover.map(createHeroCover)}
 
 
 
-                {ArrayOfBlogs.slice(2, 4).map(createSecondaryHeroCover)}
+                {secondCover.map(createSecondaryHeroCover)}
 
 
 
