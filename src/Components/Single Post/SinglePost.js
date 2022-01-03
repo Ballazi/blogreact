@@ -86,7 +86,7 @@ let SinglePost = () => {
 
     useEffect(() => {
 
-        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/singlepost";
+        const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/singlepost";
         axios.get(url,{params:{id:id}}).then((res) => {setblog(res.data.obj);setrandblog(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
         
     })

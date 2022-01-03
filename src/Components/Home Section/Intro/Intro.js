@@ -39,7 +39,7 @@ let Intro = () => {
     const [secondCover, setSecondCover] = useState([]);
 
     useEffect (() => {
-        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/home/intro";
+        const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/home/intro";
         axios.get(url).then((res) => {setCover(res.data.arr1);setSecondCover(res.data.arr2)}).catch((err) => {console.log(JSON.stringify(err))});
     })
 

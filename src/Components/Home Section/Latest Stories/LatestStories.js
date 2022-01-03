@@ -25,7 +25,7 @@ let LatestStories = () => {
   const [blogs, setBlogs] = useState([]);
    
   useEffect(() => {
-      const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/home/lateststories";
+      const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/home/lateststories";
       axios.get(url,{params:{num:postNumber}}).then((res) => {setBlogs(res.data.arr)}).catch((err) => {console.log(JSON.stringify)});
   })
 

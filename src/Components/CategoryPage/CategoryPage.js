@@ -37,7 +37,7 @@ let MultiUse = () => {
 
     useEffect(() => {
 
-        const url = "http://node-backend-react-blogs.herokuapp.com/api/v1/common";
+        const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/common";
         axios.get(url,{params:{category:category}}).then((res) => {setblog(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
         // let blog = ArrayOfBlogs.find(blog => blog.category === category)
         // if (blog) {
