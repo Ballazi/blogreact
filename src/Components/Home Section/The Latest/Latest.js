@@ -23,7 +23,7 @@ let Latest = () => {
     useEffect(() => {
         const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/home/latest";
         axios.get(url).then((res) => {setBlogs(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
-    })
+    },[])
 
     return (
         <div className="latest-Container">
