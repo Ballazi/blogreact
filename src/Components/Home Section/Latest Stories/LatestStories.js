@@ -27,7 +27,7 @@ let LatestStories = () => {
   useEffect(() => {
       const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/home/lateststories";
       axios.get(url,{params:{num:postNumber}}).then((res) => {setBlogs(res.data.arr)}).catch((err) => {console.log(JSON.stringify)});
-  })
+  },[postNumber])
 
 
   return (
@@ -43,7 +43,7 @@ let LatestStories = () => {
           className="load-more"
         >
           {" "}
-          <i class="fas fa-arrow-down"></i> Load More
+          <i className="fas fa-arrow-down"></i> Load More
         </div>
       </div>
     </div>

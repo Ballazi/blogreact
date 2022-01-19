@@ -41,7 +41,7 @@ let Intro = () => {
     useEffect (() => {
         const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/home/intro";
         axios.get(url).then((res) => {setCover(res.data.arr1);setSecondCover(res.data.arr2)}).catch((err) => {console.log(JSON.stringify(err))});
-    })
+    },[])
 
     return (
         <div className="Intro-Container">

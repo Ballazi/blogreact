@@ -3,7 +3,7 @@ import React from "react";
 import NavBar from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import axios from "axios";
 
 
@@ -33,17 +33,14 @@ let CreateLatestArticles = (data) => {
 let MultiUse = () => {
     const [postNumber, setpostNumber] = useState(2)
     const { category } = useParams();
-    const [blog, setblog] = useState(null)
+    const [blog, setblog] = useState(null);
 
     useEffect(() => {
 
         const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/common";
         axios.get(url,{params:{category:category}}).then((res) => {setblog(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
-        // let blog = ArrayOfBlogs.find(blog => blog.category === category)
-        // if (blog) {
-        //     setblog(blog)
-        // }
-    })
+        // console.log(blog);
+    },[category])
 
     return (
         <>
@@ -58,7 +55,7 @@ let MultiUse = () => {
 
                                 {blog.slice(0, postNumber).map(CreateLatestArticles)}
 
-                                <div onClick={() => setpostNumber(postNumber + 2)} className="load-more"> <i class="fas fa-arrow-down"></i> Load More</div>
+                                <div onClick={() => setpostNumber(postNumber + 2)} className="load-more"> <i className="fas fa-arrow-down"></i> Load More</div>
 
                             </div>
                             <div className="articles-right-home">
