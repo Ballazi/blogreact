@@ -21,7 +21,7 @@ let Latest = () => {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/home/latest";
+        const url = "https://nodebackendreactblogs-production.up.railway.app/api/v1/home/latest";
         axios.get(url).then((res) => {setBlogs(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
     },[])
 

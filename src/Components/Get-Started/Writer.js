@@ -41,7 +41,7 @@ let WriterProfile = () => {
         // if (blog) {
         //     setblog(blog)
         // }
-        const url = "https://node-backend-react-blogs.herokuapp.com/api/v1/writer";
+        const url = "https://nodebackendreactblogs-production.up.railway.app/api/v1/writer";
         axios.get(url,{params:{author:author}}).then((res) => {setblog(res.data.arr);setrblog(res.data.arr1)}).catch((err) => {console.log(JSON.stringify(err))});
     },[author]);
 
