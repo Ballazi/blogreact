@@ -39,7 +39,7 @@ let Intro = () => {
     const [secondCover, setSecondCover] = useState([]);
 
     useEffect (() => {
-        const url = "https://nodebackendreactblogs-production.up.railway.app/api/v1/home/intro";
+        const url = "https://node-backend-react-blogs.onrender.com/api/v1/home/intro";
         axios.get(url).then((res) => {setCover(res.data.arr1);setSecondCover(res.data.arr2)}).catch((err) => {console.log(JSON.stringify(err))});
     },[])
 
