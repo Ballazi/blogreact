@@ -5,6 +5,7 @@ import SinglePost from './Components/Single Post/SinglePost';
 import GetStarted from './Components/Get-Started/Get-Started';
 import WriterProfile from './Components/Get-Started/Writer';
 import multiUse from './Components/CategoryPage/CategoryPage';
+import NotFound from './NotFound';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/:category/:id" component={SinglePost} />
           <Route exact path="/:category/:id/:author" component={WriterProfile} />
           <Route exact path="/GetStarted/" component={GetStarted} />
+          <Route path="*" element={<NotFound />} />
         </Switch>
       </BrowserRouter>
 
