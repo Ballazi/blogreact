@@ -6,9 +6,14 @@ import GetStarted from './Components/Get-Started/Get-Started';
 import WriterProfile from './Components/Get-Started/Writer';
 import multiUse from './Components/CategoryPage/CategoryPage';
 import NotFound from './NotFound';
+import InstallPrompt from './InstallPrompt';
+
+
+
 function App() {
   return (
     <div className="App">
+      <InstallPrompt />
       <BrowserRouter>
         <Switch >
           <Route exact path="/" component={Home} />
