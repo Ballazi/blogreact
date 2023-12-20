@@ -1,6 +1,6 @@
 import './Nav.css';
 import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import Navlinks from "./Navlinks"
 import Logo from "../../Images/logo5.jpeg"
 
