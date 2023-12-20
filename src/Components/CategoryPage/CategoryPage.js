@@ -36,7 +36,7 @@ let MultiUse = () => {
     const [blog, setblog] = useState(null);
 
     useEffect(() => {
-
+        setpostNumber(2);
         const url = "https://node-backend-react-blogs.onrender.com/api/v1/common";
         axios.get(url,{params:{category:category}}).then((res) => {setblog(res.data.arr)}).catch((err) => {console.log(JSON.stringify(err))});
         // console.log(blog);

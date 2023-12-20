@@ -34,7 +34,14 @@ body {
     font-weight: bold;
 }
 
-.nav-list ul {
+.nav-list .space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline-start: 10px;
+}
+
+.nav-list .space ul {
     margin: 0;
     list-style-type: none;
     display: flex;
@@ -43,7 +50,7 @@ body {
     padding-inline-start: 0;
 }
 
-.nav-list ul li {
+.nav-list .space ul li {
     font-size: 18px;
     font-weight: 500;
     padding: 0.5rem 1.5rem;
