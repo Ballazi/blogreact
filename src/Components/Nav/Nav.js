@@ -27,7 +27,8 @@ function NavBar() {
                 <div className="nav-list web-bg-nav">
                     <div onClick={clickHandler}><i className="fas menu-btn fa-bars" ></i> </div>
                     <div className='space'>
-                        <img width="100px" height="100px" src={Logo} alt='LOGO' />
+                        <div className='logo-img'><img width="100px" height="100px" src={Logo} alt='LOGO' /></div>
+                        <div className='logo-text'>Blogsteria</div>
                         <ul className={isactive ? "show" : ""}>
                             <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
                             {Navlinks.map(createNavLink)}
