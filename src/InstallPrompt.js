@@ -30,7 +30,7 @@ function InstallPrompt() {
     };
 
     return (
-        <button onClick={handleInstallClick} style={{ display: deferredPrompt ? 'block' : 'none' }}>
+        <button className='appInstallButton' onClick={handleInstallClick} style={{ display: deferredPrompt ? 'block' : 'none' }}>
             Install App
         </button>
     );
